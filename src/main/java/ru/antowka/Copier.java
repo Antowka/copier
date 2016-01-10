@@ -57,7 +57,9 @@ public class Copier {
                     Path newPath = Paths.get(copyTo.toString() + "/" + path.getFileName().toString());
 
                     try {
-                        Files.copy(path, newPath);
+                        if(!Files.exists(newPath)) {
+                            Files.copy(path, newPath);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

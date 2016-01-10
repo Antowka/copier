@@ -25,7 +25,7 @@ public class Finder extends SimpleFileVisitor<Path> {
     // the file or directory name.
     void find(Path file) {
         Path name = file.getFileName();
-        if (name != null && matcher.matches(name)) {
+        if (name != null && matcher.matches(name) && !Files.isDirectory(file)) {
             numMatches++;
             result.add(file);
         }
