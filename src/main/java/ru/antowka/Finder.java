@@ -11,15 +11,9 @@ import java.util.List;
  */
 public class Finder extends SimpleFileVisitor<Path> {
 
-    private final PathMatcher matcher;
+    private PathMatcher matcher;
     private int numMatches = 0;
     private List<Path> result = new ArrayList<Path>();
-
-    Finder(String pattern) {
-        matcher = FileSystems
-                .getDefault()
-                .getPathMatcher("glob:" + pattern);
-    }
 
     // Compares the glob pattern against
     // the file or directory name.
@@ -59,7 +53,21 @@ public class Finder extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
-    public List<Path> getResult() {
+    public List<Path> findByParams(Path startingDir, String pattern){
+
+        //Set pattern for search
+        matcher = FileSystems
+                .getDefault()
+                .getPathMatcher("glob:" + pattern);
+
+        //Try find files recursive in folders
+        try {
+            Files.walkFileTree(startingDir, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        done();
+
         return result;
     }
 }

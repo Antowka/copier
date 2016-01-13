@@ -27,5 +27,5 @@ repositories {
 
 //Project dependencies
 dependencies {
-
+    compile 'org.jooq:joox:1.2.0';
 }
