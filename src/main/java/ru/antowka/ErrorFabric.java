@@ -7,6 +7,10 @@ import ru.antowka.Entity.Error;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 import static org.joox.JOOX.*;
 
 /**
@@ -20,8 +24,9 @@ public class ErrorFabric {
 
         //get xml with errors
         try {
-            xmlDB = $(new File("src/main/resources/xml/errors.xml"));
-            String test = "";
+            InputStream is = getClass().getResourceAsStream("/xml/errors.xml");
+            xmlDB = $(is);
+            is.close();
         } catch (IOException | SAXException e) {
             e.printStackTrace();
         }

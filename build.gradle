@@ -1,28 +1,36 @@
 group 'ru.antowka'
-version '1.0-SNAPSHOT'
 
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
 version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
 
-//create a single Jar with all dependencies
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'Search and copy',
-                   'Implementation-Version': version,
-                   'Main-Class': 'ru.antowka.Copier'
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
     }
-    baseName = project.name
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.antowka.Copier'
+    }
+}
+
+shadowJar {
+    mergeServiceFiles('META-INF/xml')
 }
 
 //Get dependencies from Maven central repository
 repositories {
+    mavenLocal()
     mavenCentral()
+    jcenter()
 }
 
 //Project dependencies

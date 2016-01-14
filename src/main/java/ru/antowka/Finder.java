@@ -1,5 +1,7 @@
 package ru.antowka;
 
+import ru.antowka.Entity.FileFound;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -13,7 +15,7 @@ public class Finder extends SimpleFileVisitor<Path> {
 
     private PathMatcher matcher;
     private int numMatches = 0;
-    private List<Path> result = new ArrayList<Path>();
+    private List<FileFound> result = new ArrayList<FileFound>();
 
     // Compares the glob pattern against
     // the file or directory name.
@@ -21,7 +23,14 @@ public class Finder extends SimpleFileVisitor<Path> {
         Path name = file.getFileName();
         if (name != null && matcher.matches(name) && !Files.isDirectory(file)) {
             numMatches++;
-            result.add(file);
+
+            FileFound fileFound = new FileFound();
+            fileFound.setFilePath(file);
+            fileFound.setFileName(file.getFileName().toString());
+            fileFound.setFileExt(file.getFileName().toString().substring(file.getFileName().toString().indexOf(".")));
+            fileFound.setFileSize(file.toFile().length());
+
+            result.add(fileFound);
         }
     }
 
@@ -53,7 +62,7 @@ public class Finder extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
-    public List<Path> findByParams(Path startingDir, String pattern){
+    public List<FileFound> findByParams(Path startingDir, String pattern){
 
         //Set pattern for search
         matcher = FileSystems

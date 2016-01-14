@@ -1,17 +1,19 @@
 package ru.antowka;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import ru.antowka.Entity.FileFound;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -28,6 +30,7 @@ public class Copier extends Application {
     private Path targetFolder;
     private String pattern;
     private ErrorFabric ef = new ErrorFabric();
+
 
     public static void main(String[] args) {
 
@@ -69,7 +72,13 @@ public class Copier extends Application {
         grid.setPadding(new Insets(10, 30, 50, 30));
         grid.setVgap(5);
         grid.setVgap(5);
-        root.setCenter(grid);
+        root.setTop(grid);
+
+        //create VBox for Table
+        final VBox vbox = new VBox();
+        vbox.setSpacing(5);
+        vbox.setPadding(new Insets(10, 0, 0, 10));
+        root.setBottom(vbox);
 
         // ********************* SOURCE FOLDER ********************************
 
@@ -90,6 +99,28 @@ public class Copier extends Application {
             File selectedDirectory = chooserSource.showDialog(primaryStage);
             textFieldSourceFolder.setText(selectedDirectory.getAbsolutePath());
         });
+
+
+        // ********************** TABLE WITH RESULT ***************************
+        //todo - http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm#CJAGAAEE
+        final Label label = new Label("Search Result");
+
+        //create table
+        final TableView table = new TableView();
+        table.setEditable(false);
+
+        //create header for table
+        TableColumn fileNameCol = new TableColumn("Name");
+        fileNameCol.setCellValueFactory(new PropertyValueFactory<>("fileName"));
+
+        TableColumn fileSizeCol = new TableColumn("Size");
+        fileSizeCol.setCellValueFactory(new PropertyValueFactory<>("fileSize"));
+
+        TableColumn fileExtCol = new TableColumn("Ext");
+        fileExtCol.setCellValueFactory(new PropertyValueFactory<>("FileExt"));
+        table.getColumns().addAll(fileNameCol, fileSizeCol, fileExtCol);
+
+
 
         // ********************* TARGET FOLDER ********************************
 
@@ -143,11 +174,13 @@ public class Copier extends Application {
 
             //find files
             Finder finder = new Finder();
-            List<Path> foundFiles = finder.findByParams(sourceFolder, pattern);
+            List<FileFound> foundFiles = finder.findByParams(sourceFolder, pattern);
+            ObservableList<FileFound> fileListObsrv = FXCollections.observableArrayList(foundFiles);
+            table.setItems(fileListObsrv);
         });
 
-        //Table with files list
-        //todo - http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm#CJAGAAEE
+
+        vbox.getChildren().addAll(label, table);
 
         primaryStage.show();
     }
