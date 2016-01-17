@@ -29,6 +29,7 @@ public class Finder extends SimpleFileVisitor<Path> {
             fileFound.setFileName(file.getFileName().toString());
             fileFound.setFileExt(file.getFileName().toString().substring(file.getFileName().toString().indexOf(".")));
             fileFound.setFileSize(file.toFile().length());
+            fileFound.setFullPath(file.toString());
 
             result.add(fileFound);
         }

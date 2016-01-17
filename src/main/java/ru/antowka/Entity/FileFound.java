@@ -1,5 +1,9 @@
 package ru.antowka.Entity;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableBooleanValue;
+
 import java.nio.file.Path;
 
 /**
@@ -9,8 +13,11 @@ public class FileFound {
 
     private String fileName;
     private Long fileSize;
-    private String FileExt;
+    private String fileExt;
+    private String fullPath;
     private Path filePath;
+    private BooleanProperty checked = new SimpleBooleanProperty(true);
+
 
     public String getFileName() {
         return fileName;
@@ -29,11 +36,19 @@ public class FileFound {
     }
 
     public String getFileExt() {
-        return FileExt;
+        return fileExt;
     }
 
     public void setFileExt(String fileExt) {
-        FileExt = fileExt;
+        this.fileExt = fileExt;
+    }
+
+    public String getFullPath() {
+        return fullPath;
+    }
+
+    public void setFullPath(String fullPath) {
+        this.fullPath = fullPath;
     }
 
     public Path getFilePath() {
@@ -42,5 +57,13 @@ public class FileFound {
 
     public void setFilePath(Path filePath) {
         this.filePath = filePath;
+    }
+
+    public ObservableBooleanValue isChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked.set(checked);
     }
 }

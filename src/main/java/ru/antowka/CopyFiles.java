@@ -1,5 +1,7 @@
 package ru.antowka;
 
+import ru.antowka.Entity.FileFound;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +22,7 @@ public class CopyFiles {
      * @param targetFolder
      * @return
      */
-    public int copyFilesByPath(List<Path> files, Path targetFolder){
+    public int copyFilesByPath(List<FileFound> files, Path targetFolder){
 
         //reset counter
         countCopyFiles = 0;
@@ -37,13 +39,13 @@ public class CopyFiles {
             }
 
             //Copy files
-            files.stream().forEach(path -> {
+            files.stream().forEach(fileFound -> {
 
-                Path newPath = Paths.get(targetFolder.toString() + "/" + path.getFileName().toString());
+                Path newPath = Paths.get(targetFolder.toString() + "/" + fileFound.getFileName());
 
                 try {
                     if (!Files.exists(newPath)) {
-                        Files.copy(path, newPath);
+                        Files.copy(fileFound.getFilePath(), newPath);
                         countCopyFiles++;
                     }
                 } catch (IOException e) {

@@ -20,7 +20,7 @@ public class ErrorFabric {
 
     private Match xmlDB;
 
-    ErrorFabric(){
+    public ErrorFabric(){
 
         //get xml with errors
         try {
@@ -31,7 +31,6 @@ public class ErrorFabric {
             e.printStackTrace();
         }
     }
-
 
     public Alert getError(Integer code){
 
