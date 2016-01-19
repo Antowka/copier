@@ -34,9 +34,8 @@ public class ErrorFabric {
 
     public Alert getError(Integer code){
 
-        Error error = new Error();
-
         Match result = xmlDB.find("error").filter(ids(code.toString()));
+        Error error = new Error();
         error.setHeader(result.find("header").content());
         error.setTitle(result.find("title").content());
         error.setDescription(result.find("description").content());

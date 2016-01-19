@@ -1,37 +1,23 @@
 package ru.antowka;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import ru.antowka.Controllers.MainController;
+import ru.antowka.init.impl.CliInitializer;
+import ru.antowka.init.impl.GuiInitializer;
 
 /**
  * Created by Anton Nik on 17.01.16.
  */
-public class Initializer extends Application {
+public class Initializer  {
 
     public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+        if(args.length == 0) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
-        Parent root = loader.load();
+            //GUI Version
+            new GuiInitializer().initilize(args);
+        } else {
 
-        //set primary stage to MainController
-        MainController mainController = loader.getController();
-        mainController.setPrimaryStage(primaryStage);
-
-        // переданный в параметре объект stage является нашим окном
-        primaryStage.setTitle("GUI MainController");
-
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
+            //Console Version
+            new CliInitializer().initilize(args);
+        }
     }
 }
