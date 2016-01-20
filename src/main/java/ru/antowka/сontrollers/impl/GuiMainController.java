@@ -8,16 +8,18 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import ru.antowka.entity.Error;
 import ru.antowka.сontrollers.MainController;
-import ru.antowka.CopyFiles;
+import ru.antowka.services.CopyFiles;
 import ru.antowka.entity.FileFound;
-import ru.antowka.ErrorFabric;
-import ru.antowka.Finder;
+import ru.antowka.services.ErrorFabric;
+import ru.antowka.services.Finder;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -129,7 +131,7 @@ public class GuiMainController implements MainController{
         //check exist source folder
         if(!Files.isDirectory(sourceFolder)) {
             //show error #1
-            ef.getError(1).showAndWait();
+            showError(ef.getError(1));
         }
 
         pattern = textFieldPattern.getText();
@@ -137,7 +139,7 @@ public class GuiMainController implements MainController{
         //check pattern on empty
         if(pattern.isEmpty()){
             //show error #3
-            ef.getError(3).showAndWait();
+            showError(ef.getError(3));
         }
 
         //find files
@@ -168,13 +170,20 @@ public class GuiMainController implements MainController{
      */
     private void copyFiles(){
 
-        //todo - add check on checked file
+        List<FileFound> selectedFiles = new ArrayList<>();
+
+        //select only checked files
+        foundFiles.stream().forEach(file -> {
+            if(file.isChecked().get()) {
+                selectedFiles.add(file);
+            }
+        });
 
         //set source folder
         targetFolder = Paths.get(textFieldTargetFolder.getText());
 
         //Copy Files
-        copyFiles.copyFilesByPath(foundFiles ,targetFolder);
+        copyFiles.copyFilesByPath(selectedFiles ,targetFolder);
     }
 
     /**
@@ -183,6 +192,21 @@ public class GuiMainController implements MainController{
     private void clearResult(){
         fileListObsrv.removeAll(foundFiles);
         tableFiles.refresh();
+    }
+
+    /**
+     * Show error
+     *
+     * @param error
+     * @return
+     */
+    private void showError(Error error){
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error.getTitle());
+        alert.setHeaderText(error.getHeader());
+        alert.setContentText(error.getDescription());
+        alert.showAndWait();
     }
 
 

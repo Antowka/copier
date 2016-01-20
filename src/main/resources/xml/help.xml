@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helps>
+    <!-- help for CLI -->
+    <help id="cli">
+        <title>*********************** HELP for cli version *************************</title>
+        <description>
+            Test help for cli
+        </description>
+    </help>
+
+    <!-- help for GUI -->
+    <help id="gui">
+        <title>Help</title>
+        <description>
+            Test help gui
+        </description>
+    </help>
+</helps>

@@ -1,4 +1,4 @@
-package ru.antowka;
+package ru.antowka.services;
 
 import javafx.scene.control.Alert;
 import org.joox.Match;
@@ -29,7 +29,7 @@ public class ErrorFabric {
         }
     }
 
-    public Alert getError(Integer code){
+    public Error getError(Integer code){
 
         Match result = xmlDB.find("error").filter(ids(code.toString()));
         Error error = new Error();
@@ -37,16 +37,6 @@ public class ErrorFabric {
         error.setTitle(result.find("title").content());
         error.setDescription(result.find("description").content());
 
-        return errorToAlert(error);
-    }
-
-    private Alert errorToAlert(Error error){
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(error.getTitle());
-        alert.setHeaderText(error.getHeader());
-        alert.setContentText(error.getDescription());
-
-        return alert;
+        return error;
     }
 }

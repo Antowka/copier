@@ -1,4 +1,4 @@
-package ru.antowka;
+package ru.antowka.services;
 
 import ru.antowka.entity.FileFound;
 
