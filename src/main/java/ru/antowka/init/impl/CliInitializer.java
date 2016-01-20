@@ -1,7 +1,7 @@
 package ru.antowka.init.impl;
 
-import ru.antowka.Controllers.MainController;
-import ru.antowka.Controllers.impl.CliMainController;
+import ru.antowka.сontrollers.MainController;
+import ru.antowka.сontrollers.impl.CliMainController;
 import ru.antowka.init.Initializer;
 
 /**

@@ -1,4 +1,4 @@
-package ru.antowka.Controllers.impl;
+package ru.antowka.сontrollers.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,9 +8,9 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import ru.antowka.Controllers.MainController;
+import ru.antowka.сontrollers.MainController;
 import ru.antowka.CopyFiles;
-import ru.antowka.Entity.FileFound;
+import ru.antowka.entity.FileFound;
 import ru.antowka.ErrorFabric;
 import ru.antowka.Finder;
 

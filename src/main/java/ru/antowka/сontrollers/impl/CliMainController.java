@@ -1,6 +1,6 @@
-package ru.antowka.Controllers.impl;
+package ru.antowka.сontrollers.impl;
 
-import ru.antowka.Controllers.MainController;
+import ru.antowka.сontrollers.MainController;
 
 /**
  * Created by Anton Nik on 19.01.16.

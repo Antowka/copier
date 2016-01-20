@@ -3,13 +3,10 @@ package ru.antowka;
 import javafx.scene.control.Alert;
 import org.joox.Match;
 import org.xml.sax.SAXException;
-import ru.antowka.Entity.Error;
+import ru.antowka.entity.Error;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 import static org.joox.JOOX.*;
 

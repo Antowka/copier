@@ -1,4 +1,4 @@
-package ru.antowka.Entity;
+package ru.antowka.entity;
 
 /**
  * Created by Anton Nik on 14.01.16.

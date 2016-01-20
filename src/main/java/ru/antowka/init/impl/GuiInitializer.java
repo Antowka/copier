@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.antowka.Controllers.MainController;
-import ru.antowka.Controllers.impl.GuiMainController;
+import ru.antowka.сontrollers.MainController;
+import ru.antowka.сontrollers.impl.GuiMainController;
 import ru.antowka.init.Initializer;
 
 /**

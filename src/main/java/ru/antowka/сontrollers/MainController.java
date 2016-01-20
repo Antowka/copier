@@ -1,4 +1,4 @@
-package ru.antowka.Controllers;
+package ru.antowka.сontrollers;
 
 /**
  * Created by Anton Nik on 19.01.16.

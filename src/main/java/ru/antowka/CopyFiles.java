@@ -1,6 +1,6 @@
 package ru.antowka;
 
-import ru.antowka.Entity.FileFound;
+import ru.antowka.entity.FileFound;
 
 import java.io.IOException;
 import java.nio.file.Files;
