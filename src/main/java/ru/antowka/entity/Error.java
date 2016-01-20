@@ -3,11 +3,11 @@ package ru.antowka.entity;
 /**
  * Created by Anton Nik on 14.01.16.
  */
-public class Error {
+public abstract class Error {
 
-    private String header;
-    private String title;
-    private String Description;
+    protected String header;
+    protected String title;
+    protected String description;
 
     public String getHeader() {
         return header;
@@ -26,10 +26,14 @@ public class Error {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
+    }
+
+    public void show(){
+
     }
 }

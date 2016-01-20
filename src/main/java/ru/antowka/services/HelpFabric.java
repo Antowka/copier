@@ -24,7 +24,7 @@ public class HelpFabric {
 
         //get xml with helps
         try {
-            InputStream is = getClass().getResourceAsStream("/xml/helps.xml");
+            InputStream is = getClass().getResourceAsStream("/xml/help.xml");
             xmlDB = $(is);
             is.close();
         } catch (IOException | SAXException e) {
@@ -53,7 +53,7 @@ public class HelpFabric {
             break;
         }
 
-        Match result = xmlDB.find("error").filter(ids(type));
+        Match result = xmlDB.find("help").filter(ids(type));
         help.setTitle(result.find("title").content());
         help.setDescription(result.find("description").content());
 

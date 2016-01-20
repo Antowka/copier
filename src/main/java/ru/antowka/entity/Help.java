@@ -5,15 +5,15 @@ package ru.antowka.entity;
  */
 public abstract class Help {
 
-    private String title;
-    private String Description;
+    protected String title;
+    protected String description;
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -22,5 +22,9 @@ public abstract class Help {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void show(){
+
     }
 }

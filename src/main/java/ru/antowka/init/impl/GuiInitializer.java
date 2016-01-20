@@ -5,12 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.antowka.сontrollers.MainController;
-import ru.antowka.сontrollers.impl.GuiMainController;
+import ru.antowka.сontrollers.GuiMainController;
 import ru.antowka.init.Initializer;
 
 /**
- * Created by anton on 19.01.16.
+ * Created by Anton Nik on 19.01.16.
  */
 public class GuiInitializer extends Application implements Initializer {
 
@@ -26,8 +25,8 @@ public class GuiInitializer extends Application implements Initializer {
         Parent root = loader.load();
 
         //set primary stage to GuiMainController
-        MainController mainController = loader.getController();
-        ((GuiMainController) mainController).setPrimaryStage(primaryStage);
+        GuiMainController guiMainController = loader.getController();
+        guiMainController.setPrimaryStage(primaryStage);
 
         // переданный в параметре объект stage является нашим окном
         primaryStage.setTitle("GUI GuiMainController");

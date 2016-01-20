@@ -4,14 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import ru.antowka.entity.Error;
 import ru.antowka.entity.FileFound;
 import ru.antowka.services.CopyFiles;
 import ru.antowka.services.ErrorFabric;
 import ru.antowka.services.Finder;
 import ru.antowka.services.HelpFabric;
+import ru.antowka.сontrollers.CliMainController;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

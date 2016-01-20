@@ -1,4 +1,4 @@
-package ru.antowka.сontrollers.impl;
+package ru.antowka.сontrollers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import ru.antowka.entity.Error;
-import ru.antowka.сontrollers.MainController;
 import ru.antowka.services.CopyFiles;
 import ru.antowka.entity.FileFound;
 import ru.antowka.services.ErrorFabric;
@@ -25,7 +24,7 @@ import java.util.List;
 /**
  * Created by Anton Nik on 10.01.16.
  */
-public class GuiMainController implements MainController{
+public class GuiMainController {
 
     private Path sourceFolder;
     private Path targetFolder;
@@ -131,7 +130,7 @@ public class GuiMainController implements MainController{
         //check exist source folder
         if(!Files.isDirectory(sourceFolder)) {
             //show error #1
-            showError(ef.getError(1));
+            ef.getError("gui", 1).show();
         }
 
         pattern = textFieldPattern.getText();
@@ -139,7 +138,7 @@ public class GuiMainController implements MainController{
         //check pattern on empty
         if(pattern.isEmpty()){
             //show error #3
-            showError(ef.getError(3));
+            ef.getError("gui", 3).show();
         }
 
         //find files
@@ -202,11 +201,7 @@ public class GuiMainController implements MainController{
      */
     private void showError(Error error){
 
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(error.getTitle());
-        alert.setHeaderText(error.getHeader());
-        alert.setContentText(error.getDescription());
-        alert.showAndWait();
+
     }
 
 

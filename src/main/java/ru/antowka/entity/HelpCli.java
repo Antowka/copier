@@ -10,6 +10,7 @@ public class HelpCli extends Help{
      * Method print help page
      */
     public void show() {
-
+        System.out.println(title);
+        System.out.println(description);
     }
 }

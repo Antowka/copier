@@ -4,7 +4,11 @@
     <help id="cli">
         <title>*********************** HELP for cli version *************************</title>
         <description>
-            Test help for cli
+            Help: java -jar copier.jar -help
+
+            Show found files: java -jar copier.jar -find /home/anton/Desktop/test  *.fb2
+
+            Copy found files: java -jar copier.jar -copy /home/anton/Desktop/test /home/anton/Desktop/test1 *.fb2
         </description>
     </help>
 
