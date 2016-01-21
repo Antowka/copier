@@ -50,7 +50,9 @@ public class CliMainController {
 
         Path pathSource = Paths.get(args[1]);
 
-        if(!Files.exists(pathSource)) {
+        Boolean folderIsExist = Files.exists(pathSource);
+
+        if(!folderIsExist) {
 
             Error error = ef.getError("cli", 1);
             error.show();
