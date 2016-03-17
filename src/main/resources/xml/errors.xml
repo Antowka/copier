@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<errors>
+    <error id="0">
+        <header>Wrong params</header>
+        <title>Wrong list arguments</title>
+        <description>You didn't set all or valid params</description>
+    </error>
+    <error id="1">
+        <header>Not found folder</header>
+        <title>Source folder not found</title>
+        <description>Source folder not found</description>
+    </error>
+    <error id="2">
+        <header>Not found folder</header>
+        <title>Target folder not found</title>
+        <description>Target folder not found</description>
+    </error>
+    <error id="3">
+        <header>Wrong Pattern</header>
+        <title>Pattern is wrong or empty</title>
+        <description>Please check pattern and try again</description>
+    </error>
+</errors>

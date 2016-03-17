@@ -1,4 +1,6 @@
-package ru.antowka;
+package ru.antowka.services;
+
+import ru.antowka.entity.FileFound;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -11,15 +13,9 @@ import java.util.List;
  */
 public class Finder extends SimpleFileVisitor<Path> {
 
-    private final PathMatcher matcher;
+    private PathMatcher matcher;
     private int numMatches = 0;
-    private List<Path> result = new ArrayList<Path>();
-
-    Finder(String pattern) {
-        matcher = FileSystems
-                .getDefault()
-                .getPathMatcher("glob:" + pattern);
-    }
+    private List<FileFound> result = new ArrayList<FileFound>();
 
     // Compares the glob pattern against
     // the file or directory name.
@@ -27,7 +23,15 @@ public class Finder extends SimpleFileVisitor<Path> {
         Path name = file.getFileName();
         if (name != null && matcher.matches(name) && !Files.isDirectory(file)) {
             numMatches++;
-            result.add(file);
+
+            FileFound fileFound = new FileFound();
+            fileFound.setFilePath(file);
+            fileFound.setFileName(file.getFileName().toString());
+            fileFound.setFileExt(file.getFileName().toString().substring(file.getFileName().toString().indexOf(".")));
+            fileFound.setFileSize(file.toFile().length());
+            fileFound.setFullPath(file.toString());
+
+            result.add(fileFound);
         }
     }
 
@@ -59,7 +63,21 @@ public class Finder extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
-    public List<Path> getResult() {
+    public List<FileFound> findByParams(Path startingDir, String pattern){
+
+        //Set pattern for search
+        matcher = FileSystems
+                .getDefault()
+                .getPathMatcher("glob:" + pattern);
+
+        //Try find files recursive in folders
+        try {
+            Files.walkFileTree(startingDir, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        done();
+
         return result;
     }
 }
