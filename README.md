@@ -2,6 +2,8 @@
 
 ###Script for recursive searching files by pattern and copy result to distination folder
 
+Download execute file: [copier.jar](https://github.com/Antowka/copier/raw/master/bin/copier.jar)
+
 This script can work in console or gui
 
 For use GUI, you need start jar without arguments:
@@ -9,8 +11,6 @@ For use GUI, you need start jar without arguments:
 **java -jar coper.jar**
 
 ![GUI](http://cs630524.vk.me/v630524713/10bbb/oYOEF4ndljk.jpg)
-
-Download execute file: [copier.jar](https://github.com/Antowka/copier/raw/master/bin/copier.jar)
 
 OR use in console: 
 
