@@ -4,7 +4,7 @@
 
 This script can work in console or gui
 
-For use GUI, you need start jar without arguments (branch with gui):
+For use GUI, you need start jar without arguments:
 
 **java -jar coper.jar**
 
