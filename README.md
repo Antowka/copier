@@ -10,6 +10,8 @@ For use GUI, you need start jar without arguments:
 
 ![GUI](http://cs630524.vk.me/v630524713/10bbb/oYOEF4ndljk.jpg)
 
+Download execute file: [copier.jar](https://github.com/Antowka/copier/raw/master/bin/copier.jar)
+
 OR use in console: 
 
  * Find and copy - **java -jar coper.jar /source-folder /destination-folder *.txt**
