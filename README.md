@@ -1,6 +1,6 @@
-#Find & Copy#
+#Find & Copy
 
-###Script for recursive searching files by pattern and copy result to distination folder###
+###Script for recursive searching files by pattern and copy result to distination folder
 
 This script can work in console or gui
 
