@@ -4,6 +4,8 @@
     <help id="cli">
         <title>*********************** HELP for cli version *************************</title>
         <description>
+            Project URL: https://github.com/Antowka/copier
+
             Help: java -jar copier.jar -help
 
             Show found files: java -jar copier.jar -find /home/anton/Desktop/test  *.fb2
@@ -16,7 +18,7 @@
     <help id="gui">
         <title>Help</title>
         <description>
-            Test help gui
+            Project URL: https://github.com/Antowka/copier
         </description>
     </help>
 </helps>
